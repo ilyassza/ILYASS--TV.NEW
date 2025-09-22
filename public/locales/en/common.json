@@ -1,0 +1,50 @@
+{
+  "common": {
+    "welcome": "Welcome to ILYASS TV",
+    "download": "Download Apps",
+    "downloadApps": "Download Applications",
+    "downloadDesc": "Download apps to watch matches easily",
+    "chooseApp": "Choose the app and enjoy watching matches and channels",
+    "downloadBtn": "Download"
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "downloads": "Downloads",
+    "contact": "Contact"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "description": "We're here to help and answer any questions you may have",
+    "form": {
+      "fullName": "Full Name",
+      "email": "Email",
+      "message": "Message",
+      "send": "Send",
+      "success": "Your message has been sent successfully!",
+      "error": "An error occurred while sending your message. Please try again."
+    }
+  },
+  "about": {
+    "title": "About the Project",
+    "description": "An integrated project for watching sports matches and channels in high quality",
+    "features": {
+      "globalContent": {
+        "title": "Global Content",
+        "description": "Access to content from around the world"
+      },
+      "userExperience": {
+        "title": "Great User Experience",
+        "description": "User-friendly interface designed for everyone"
+      },
+      "technology": {
+        "title": "Modern Technology",
+        "description": "Built using the latest technologies"
+      },
+      "quality": {
+        "title": "High Quality",
+        "description": "High-quality and premium content"
+      }
+    }
+  }
+}

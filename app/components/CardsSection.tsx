@@ -1,0 +1,193 @@
+'use client'
+
+import { Download, Tv, Play } from 'lucide-react'
+import { useInView } from 'framer-motion'
+import { useRef } from 'react'
+import {
+  MotionDiv,
+  MotionSection,
+  MotionH2,
+  MotionP,
+  MotionButton,
+  MotionUl,
+  MotionLi
+} from './MotionComponents'
+
+export default function CardsSection() {
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2
+      }
+    }
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6
+      }
+    }
+  }
+
+  const apps = [
+    {
+      id: 1,
+      name: 'ILYASS TV',
+      nameEn: 'ILYASS TV',
+      description: 'تطبيق مشاهدة القنوات والمباريات المباشرة بجودة عالية',
+      descriptionEn: 'Watch live channels and matches in high quality',
+      icon: <Tv className="h-12 w-12" />,
+      downloadLink: '#',
+      features: ['مشاهدة مباشرة', 'جودة عالية', 'واجهة سهلة']
+    },
+    {
+      id: 2,
+      name: 'ILYASS Player',
+      nameEn: 'ILYASS Player',
+      description: 'مشغل فيديو متقدم لتشغيل جميع أنواع الملفات',
+      descriptionEn: 'Advanced video player for all file types',
+      icon: <Play className="h-12 w-12" />,
+      downloadLink: '#',
+      features: ['دعم جميع الصيغ', 'تشغيل سلس', 'تحكم كامل']
+    }
+  ]
+
+  return (
+    <MotionSection
+      ref={sectionRef}
+      initial={{ opacity: 0 }}
+      animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+      transition={{ duration: 0.8 }}
+      id="download"
+      className="py-20 bg-white dark:bg-gray-900"
+    >
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <MotionDiv
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={itemVariants}
+          className="text-center mb-16"
+        >
+          <MotionH2
+            variants={itemVariants}
+            className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+          >
+            تحميل التطبيقات
+          </MotionH2>
+          <MotionP
+            variants={itemVariants}
+            className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto"
+          >
+            اختر التطبيق المناسب لك واستمتع بمشاهدة المباريات والقنوات
+          </MotionP>
+        </MotionDiv>
+
+        {/* Apps Grid */}
+        <MotionDiv
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"
+        >
+          {apps.map((app) => (
+            <MotionDiv
+              key={app.id}
+              variants={itemVariants}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 shadow-lg hover:shadow-2xl border border-gray-200 dark:border-gray-700"
+            >
+              {/* App Icon */}
+              <MotionDiv
+                initial={{ rotate: 0 }}
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.6 }}
+                className="flex justify-center mb-6"
+              >
+                <div className="p-4 bg-primary-100 dark:bg-primary-900 rounded-full text-primary-600 dark:text-primary-400">
+                  {app.icon}
+                </div>
+              </MotionDiv>
+
+              {/* App Name */}
+              <MotionH2
+                variants={itemVariants}
+                className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-2"
+              >
+                {app.name}
+              </MotionH2>
+              <MotionP
+                variants={itemVariants}
+                className="text-sm text-gray-500 dark:text-gray-400 text-center mb-4"
+              >
+                {app.nameEn}
+              </MotionP>
+
+              {/* Description */}
+              <MotionP
+                variants={itemVariants}
+                className="text-gray-600 dark:text-gray-300 text-center mb-6 leading-relaxed"
+              >
+                {app.description}
+              </MotionP>
+              <MotionP
+                variants={itemVariants}
+                className="text-sm text-gray-500 dark:text-gray-400 text-center mb-6"
+              >
+                {app.descriptionEn}
+              </MotionP>
+
+              {/* Features */}
+              <MotionDiv
+                variants={itemVariants}
+                className="mb-8"
+              >
+                <MotionUl className="space-y-2">
+                  {app.features.map((feature, index) => (
+                    <MotionLi
+                      key={index}
+                      variants={itemVariants}
+                      className="flex items-center text-gray-600 dark:text-gray-300"
+                    >
+                      <MotionDiv
+                        initial={{ scale: 0 }}
+                        animate={{ scale: 1 }}
+                        className="w-2 h-2 bg-primary-500 rounded-full mr-3 rtl:mr-0 rtl:ml-3"
+                      />
+                      {feature}
+                    </MotionLi>
+                  ))}
+                </MotionUl>
+              </MotionDiv>
+
+              {/* Download Button */}
+              <MotionButton
+                variants={itemVariants}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={() => {
+                  // Handle download logic here
+                  alert(`تحميل ${app.name}`)
+                }}
+                className="w-full flex items-center justify-center px-6 py-3 bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+              >
+                <Download className="h-5 w-5 mr-2 rtl:mr-0 rtl:ml-2" />
+                تحميل
+              </MotionButton>
+            </MotionDiv>
+          ))}
+        </MotionDiv>
+      </div>
+    </MotionSection>
+  )
+}
