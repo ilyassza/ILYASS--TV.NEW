@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Download, Tv, Play, ChevronDown, Globe, Android, Apple, AlertTriangle } from 'lucide-react'
+import { Download, Tv, Play, ChevronDown, Globe, Smartphone, Apple, AlertTriangle } from 'lucide-react'
 import HoverCard3D from '../components/HoverCard3D'
 import { fadeInUp, staggerContainer, buttonHoverEffect } from '../styles/shared'
 
@@ -160,7 +160,7 @@ export default function DownloadsPage() {
           size: '15 MB',
           appUrl: '#app-android',
           playerUrl: '#player-android',
-          icon: <Android className="h-5 w-5" />
+          icon: <Smartphone className="h-5 w-5" />
         },
         {
           platform: 'iOS',
@@ -190,7 +190,7 @@ export default function DownloadsPage() {
           version: 'v1.5.0',
           size: '12 MB',
           appUrl: '#player-android',
-          icon: <Android className="h-5 w-5" />
+          icon: <Smartphone className="h-5 w-5" />
         },
         {
           platform: 'iOS',

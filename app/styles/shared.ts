@@ -6,7 +6,7 @@ export const fadeInUp = {
     y: 0,
     transition: {
       duration: 0.6,
-      ease: 'easeOut'
+      ease: "easeInOut"
     }
   }
 }
@@ -17,7 +17,7 @@ export const fadeIn = {
     opacity: 1,
     transition: {
       duration: 0.6,
-      ease: 'easeOut'
+      ease: "easeInOut"
     }
   }
 }
